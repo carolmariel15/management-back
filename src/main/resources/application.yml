@@ -1,0 +1,13 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: management-back
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/management?serverTimezone=America/Lima
+    username: root
+    password: mysql
+  jpa:
+    hibernate:
+      ddl-auto: update
