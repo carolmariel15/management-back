@@ -12,6 +12,7 @@ import java.util.List;
 @RequestMapping("/bm")
 @RestController
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class BenchMarkController {
 
     private final BenchMarkService service;
@@ -26,8 +27,9 @@ public class BenchMarkController {
     }
 
     @GetMapping("/{id}")
-    ResponseEntity<BenchMark> listById(int id) {
+    ResponseEntity<BenchMark> listById(@PathVariable int id) {
         var result = service.listById(id).get();
+
         return ResponseEntity.ok(result);
     }
 
@@ -44,7 +46,7 @@ public class BenchMarkController {
     }
 
     @DeleteMapping("/{id}")
-    ResponseEntity<Void> delete(int id) {
+    ResponseEntity<Void> delete(@PathVariable int id) {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
